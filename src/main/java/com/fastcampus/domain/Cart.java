@@ -12,12 +12,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fastcampus.persistence.CartRepository;
+
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter @Setter
+@RequiredArgsConstructor
 public class Cart {
+	
+	private final CartRepository cartRepository;
 	
 	@Id @GeneratedValue
     @Column(name = "cart_id")
@@ -44,7 +50,7 @@ public class Cart {
     }
 	
 	// 비즈니스 메소드 (카트에서 삭제 -> 테이블의 변화)  
-	public void cancel(int id) {
+	public void cancel(Long id) {
 		
 		// 카트 테이블에서 삭제 
 		cartRepository.deleteById(id);
