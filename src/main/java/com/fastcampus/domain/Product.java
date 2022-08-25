@@ -39,5 +39,9 @@ public class Product {
 	@JoinColumn(name = "cart_id")
 	private Cart cart;
 	
+	// 비즈니스 메소드
+	public void cancel(Long count) {
+		this.cartCount += count;
+    }
 
 }
