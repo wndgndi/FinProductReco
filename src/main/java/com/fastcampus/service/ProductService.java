@@ -1,12 +1,16 @@
 package com.fastcampus.service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fastcampus.domain.Product;
+import com.fastcampus.dto.ProductDto;
 import com.fastcampus.persistence.ProductRepository;
 import com.fastcampus.security.jpa.UserDetailsImpl;
 
@@ -17,54 +21,51 @@ import lombok.RequiredArgsConstructor;
 public class ProductService {
 	
 	private final ProductRepository productRepository;
-	
-	//찜 등록
-	@Transactional
-	public void postLikeProduct(long id,  UserDetailsImpl userDetails) {
-		List<Long> likeList =userDetails.getUser().getLikeList();
-		likeList.add(id);
-	}
-	
-	//찜 등록 해제
-	@Transactional
-	public void deleteLikeProduct(long id,  UserDetailsImpl userDetails) {
-		List<Long> likeList =userDetails.getUser().getLikeList();
-		likeList.remove(id);
-	}
-	
-	//찜 목록 조회
-	@Transactional(readOnly=true)
-	public List<Product> getLikeProducts(UserDetailsImpl userDetails){
-		List<Long> likeList =userDetails.getUser().getLikeList();
-		return productRepository.findByLikeList(likeList);
-	}
+	private final ModelMapper modelMapper;
 	
 	//모든 상품 조회
 	@Transactional(readOnly=true)
-	public List<Product> getProducts(){
-		return productRepository.findAll();
+	public List<ProductDto> getProducts(){
+		List<Product> products = productRepository.findAll();
+		List<ProductDto> productDtos = products.stream().
+				map(product -> modelMapper.map(product, ProductDto.class)).collect(Collectors.toList());
+		return productDtos;
 	}
 	
 	//상품 검색
 	@Transactional(readOnly=true)
-	public List<Product> getSearchedProducts(String keyword){
-		return productRepository.findByNameContainsIgnoreCase(keyword);
+	public List<ProductDto> getSearchedProducts(String keyword){
+		List<Product> products = productRepository.findByNameContainsIgnoreCase(keyword);
+		List<ProductDto> productDtos = products.stream().
+				map(product -> modelMapper.map(product, ProductDto.class)).collect(Collectors.toList());
+		return productDtos;
 	}
 	
-	//상품 추천
+	//유저별 추천 상품 추천
 	@Transactional(readOnly=true)
-	public List<Product> getRecoProducts(UserDetailsImpl userDetails){
+	public List<ProductDto> getRecoProducts(UserDetailsImpl userDetails){
 		User user = userDetails.getUser();
 		List<Product> recoProducts = new ArrayList<Product>();
+		recoProducts.addAll(productRepository.findByJob(user.getJob()));
+		recoProducts.addAll(productRepository.findByAge(user.getAge()));
 		
-		List<Product> recoJobProducts = productRepository.findByNameContainsIgnoreCase(user.getJob());
-		List<Product> recoAreaProducts = productRepository.findByNameContainsIgnoreCase(user.getArea());
-		List<Product> recoAgeTypeProducts = productRepository.findByAgeType(user.getAgetype());
-		recoProducts.addAll(recoJobProducts); 
-		recoProducts.addAll(recoAreaProducts);
-		recoProducts.addAll(recoAgeTypeProducts); 
-		return recoProducts;
+		List<ProductDto> recoProductDtos = recoProducts.stream().
+		map(product -> modelMapper.map(product, ProductDto.class)).collect(Collectors.toList());
+		
+		return recoProductDtos;
 	}
 	
-	
+	//주력 상품 랜덤 추천
+	@Transactional(readOnly=true)
+	public List<ProductDto> getPromoProducts(){
+		HashSet<Integer> nums = new HashSet<Integer>(6);
+		
+		for(int i=0; i<nums.size();i++) {
+			nums.add((int)(Math.random()*20));
+		}
+		List<Product> promoProducts = productRepository.findByRamdom(nums);
+		List<ProductDto> promoProductDtos = promoProducts.stream().
+				map(product -> modelMapper.map(product, ProductDto.class)).collect(Collectors.toList());
+		return promoProductDtos;
+	}
 }
