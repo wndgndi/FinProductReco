@@ -38,5 +38,6 @@ public class Product {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "cart_id")
 	private Cart cart;
+	
 
 }
