@@ -23,7 +23,7 @@ public class User {
 	@Column(name = "user_id")
 	private Long id;
 
-	private Long username;
+	private String username;
 
 	private Long password;
 
