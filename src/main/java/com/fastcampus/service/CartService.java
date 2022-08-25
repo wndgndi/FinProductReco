@@ -13,7 +13,6 @@ import com.fastcampus.persistence.ProductRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class CartService {
 	
@@ -22,9 +21,9 @@ public class CartService {
 	
 	// 카트에서 삭제 
 	@Transactional
-    public void cancelCart(Long cartId) {
+    public void cancelCart(Long id, Long cartId) {
         Optional<Cart> cart = cartRepository.findById(cartId);
-        cart.cancel();
+        cart.get().cancel(id, cartId);
     }
 
 }

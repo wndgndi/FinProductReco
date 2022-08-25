@@ -39,9 +39,16 @@ public class Product {
 	@JoinColumn(name = "cart_id")
 	private Cart cart;
 	
-	// 비즈니스 메소드
-	public void cancel(Long count) {
+	// 비즈니스 로직
+	//  cartCount 증가
+	public void addCartCount(Long count) {
 		this.cartCount += count;
+    }
+	
+	// cartCount 감소
+	public void removeCartCount(Long count) {
+        Long restCount = this.cartCount - count;
+        this.cartCount = restCount;
     }
 
 }

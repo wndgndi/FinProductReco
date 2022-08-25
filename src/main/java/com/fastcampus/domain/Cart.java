@@ -14,16 +14,17 @@ import javax.persistence.OneToOne;
 
 import com.fastcampus.persistence.CartRepository;
 
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter @Setter
-@RequiredArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Cart {
 	
-	private final CartRepository cartRepository;
+	private CartRepository cartRepository;
 	
 	@Id @GeneratedValue
     @Column(name = "cart_id")
@@ -50,14 +51,14 @@ public class Cart {
     }
 	
 	// 비즈니스 메소드 (카트에서 삭제 -> 테이블의 변화)  
-	public void cancel(Long id) {
+	public void cancel(Long id, Long count) {
 		
 		// 카트 테이블에서 삭제 
 		cartRepository.deleteById(id);
 		
 		// Product의 cartCount -1
         for (Product product : products) {
-            product.cancel();   
+            product.addCartCount(count);   
         }
     }
 	
