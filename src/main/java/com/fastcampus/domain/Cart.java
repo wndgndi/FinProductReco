@@ -43,7 +43,7 @@ public class Cart {
         return cart;
     }
 	
-	// 카트에서 삭제 
+	// 비즈니스 메소드 (카트에서 삭제 -> 테이블의 변화)  
 	public void cancel(int id) {
 		
 		// 카트 테이블에서 삭제 
