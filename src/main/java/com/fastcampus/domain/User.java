@@ -1,4 +1,3 @@
-
 package com.fastcampus.domain;
 
 import javax.persistence.Column;
@@ -7,38 +6,36 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 @Entity
-@Getter
-@Setter
-@Table(name = "users")
-public class User {
+@Data
+@Table(name = "USERS")
+public class User extends BaseTime {
 
 	@Id
-	@GeneratedValue
-	@Column(name = "user_id")
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "user_Id", nullable = false)
+	private Long id; //기본키
 
-	private String username;
+	@Column(name = "username", nullable = false, length = 50, unique = true)
+	private String username; //유저네임
 
-	private Long password;
-
-	private String name;
+	@Column(name = "password", nullable = false)
+	private String password; //비밀번호
 
 	@Enumerated(EnumType.STRING)    //  ORIGINAL : 컬럼이 숫자로 들어감 (디폴트) => 중간에 다른 상태 생기면 밀려서 사용안함 
 	private JobType jobType;
 
-	private String area;
-
-	private int ageType;
-
+	private int age; //유저 나이
+	
 	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="CART_ID")
 	private Cart cart;
-
 }
