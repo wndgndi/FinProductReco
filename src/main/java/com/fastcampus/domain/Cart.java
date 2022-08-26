@@ -9,25 +9,26 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 import com.fastcampus.persistence.CartRepository;
 
 import lombok.AccessLevel;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
-@Getter @Setter
+@Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Cart {
 	
 	private CartRepository cartRepository;
 	
-	@Id @GeneratedValue
-    @Column(name = "cart_id")
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "cart_id")
 	private Long id;
 	
 	@OneToOne(mappedBy = "delivery", fetch = FetchType.EAGER)
