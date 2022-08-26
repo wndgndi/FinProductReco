@@ -2,11 +2,10 @@ package com.fastcampus.service;
 
 import org.springframework.transaction.annotation.Transactional;
 import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Service;
 
+import org.springframework.stereotype.Service;
 import com.fastcampus.domain.User;
 import com.fastcampus.persistence.UserRepository;
-
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
