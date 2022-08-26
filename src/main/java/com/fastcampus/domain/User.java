@@ -16,7 +16,7 @@ import lombok.Data;
 import lombok.Setter;
 
 @Entity
-@Data @Setter
+@Data 
 @Table(name = "USERS")
 public class User extends BaseTime {
 
