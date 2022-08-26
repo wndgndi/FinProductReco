@@ -2,11 +2,13 @@ package com.fastcampus.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+
+
+import javax.persistence.Table;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -18,6 +20,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "users")
 public class User {
 	
 	@Id
@@ -41,7 +44,7 @@ public class User {
 	private String job;     // 직업
 	
 	@Column(name = "age")
-	private int age;        // 나이
+	private int ageType;        // 나이
 	
 	
 	@OneToOne(fetch = FetchType.LAZY)
