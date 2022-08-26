@@ -31,10 +31,8 @@ public class User extends BaseTime {
 	@Column(name = "name", nullable = false)
 	private String name; //유저 이름
 
-	@Column(name = "job")
 	private String job; //유저 직업
 
-	@Column(name = "age")
 	private int age; //유저 나이
 	
 	@OneToOne(fetch = FetchType.LAZY)
