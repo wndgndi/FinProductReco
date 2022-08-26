@@ -1,19 +1,23 @@
 package com.fastcampus.dto;
 
+import javax.persistence.Column;
+
 import lombok.Data;
 
 @Data
 public class UserDto {
+
+private Long id;   // 식별키
 	
-	private Long id; //기본키
+	private String username;    // 아이디
 	
-	private Long username; //유저네임
+	private String password;    // 비밀번호
 	
-	private Long password; //비밀번호
+	private String name;    // 이름
+			
+	private String job;     // 직업
 	
-	private String name; //유저 이름
-	
-	private String job; //유저 직업
-	
-	private int age; //유저 나이
+	private int age;        // 나이
+
 }
+
