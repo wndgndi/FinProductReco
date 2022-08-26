@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fastcampus.dto.ProductDto;
-import com.fastcampus.security.jpa.UserDetailsImpl;
 import com.fastcampus.service.ProductService;
 
 import lombok.RequiredArgsConstructor;
