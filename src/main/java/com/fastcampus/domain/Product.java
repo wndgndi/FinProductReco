@@ -4,9 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
 import lombok.Data;
 
 @Entity
@@ -34,7 +36,7 @@ public class Product {
 	
 	private int age; //나이
 
-	@ManyToOne(fetch = FetchType.Lazy)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cart_id")
 	private Cart cart;
 
