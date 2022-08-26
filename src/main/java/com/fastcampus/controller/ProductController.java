@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fastcampus.dto.ProductDto;
-import com.fastcampus.security.jpa.UserDetailsImpl;
 import com.fastcampus.service.ProductService;
 
 import lombok.RequiredArgsConstructor;
@@ -37,7 +36,7 @@ public class ProductController {
 	//유저별 추천 상품 출력
 	@GetMapping("/products/recos")
 	@ResponseBody
-	public List<ProductDto> getRecoProducts(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+	public List<ProductDto> getRecoProducts(User user) {
 		return productService.getRecoProducts(userDetails);
 	}
 	
