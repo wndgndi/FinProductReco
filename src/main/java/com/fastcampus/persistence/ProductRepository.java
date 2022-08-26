@@ -1,5 +1,5 @@
 package com.fastcampus.persistence;
 
-public class Repository {
+public class ProductRepository {
 
 }
