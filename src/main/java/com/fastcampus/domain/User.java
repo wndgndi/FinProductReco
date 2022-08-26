@@ -3,6 +3,8 @@ package com.fastcampus.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -29,7 +31,8 @@ public class User {
 
 	private String name;
 
-	private String job;
+	@Enumerated(EnumType.STRING)    //  ORIGINAL : 컬럼이 숫자로 들어감 (디폴트) => 중간에 다른 상태 생기면 밀려서 사용안함 
+	private JobType jobType;
 
 	private String area;
 
