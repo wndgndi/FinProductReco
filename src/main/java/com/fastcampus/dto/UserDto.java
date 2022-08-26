@@ -20,5 +20,6 @@ private Long id;   // 식별키
 	private String job;     // 직업
 	
 	private int age;        // 나이
-	
+
 }
+
