@@ -14,9 +14,7 @@ private Long id;   // 식별키
 	private String password;    // 비밀번호
 	
 	private String name;    // 이름
-	
-	private String role;    // 권한
-		
+			
 	private String job;     // 직업
 	
 	private int age;        // 나이
