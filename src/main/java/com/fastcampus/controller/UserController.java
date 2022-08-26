@@ -13,8 +13,10 @@ import com.fastcampus.domain.User;
 import com.fastcampus.dto.UserDto;
 import com.fastcampus.service.UserService;
 
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
-	
+
+@Api(tags = {"User 정보를 제공하는 Controller"})
 @RequiredArgsConstructor
 @RestController
 public class UserController {
