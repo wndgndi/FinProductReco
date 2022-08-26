@@ -1,5 +1,6 @@
 package com.fastcampus.controller;
 	
+
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +19,9 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
 	
 	private final UserService userService;
+
 	private final ModelMapper modelMapper;
+
 	
 	// 회원가입
 	@PostMapping("/users")
