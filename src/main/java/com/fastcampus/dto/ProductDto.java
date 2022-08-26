@@ -1,5 +1,7 @@
 package com.fastcampus.dto;
 
+import com.fastcampus.domain.JobType;
+
 import lombok.Data;
 
 @Data
@@ -19,7 +21,7 @@ public class ProductDto {
 	
 	private Long cartCount; //장바구니 등록 수
 	
-	private String job; //직업
+	private JobType jopType; //직업
 	
 	private int age; //나이
 }

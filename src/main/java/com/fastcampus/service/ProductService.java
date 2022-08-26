@@ -47,7 +47,7 @@ public class ProductService {
 	public List<ProductDto> getRecoProducts(UserDetailsImpl userDetails){
 		User user = userDetails.getUser();
 		List<Product> recoProducts = new ArrayList<Product>();
-		recoProducts.addAll(productRepository.findByJob(user.getJob()));
+		recoProducts.addAll(productRepository.findByJob(user.getJobType()));
 		recoProducts.addAll(productRepository.findByAge(user.getAge()));
 		
 		List<ProductDto> recoProductDtos = recoProducts.stream().

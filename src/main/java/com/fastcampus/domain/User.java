@@ -13,9 +13,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.Setter;
 
 @Entity
-@Data
+@Data @Setter
 @Table(name = "USERS")
 public class User extends BaseTime {
 

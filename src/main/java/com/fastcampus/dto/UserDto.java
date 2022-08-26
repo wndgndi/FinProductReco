@@ -1,6 +1,6 @@
 package com.fastcampus.dto;
 
-import javax.persistence.Column;
+import com.fastcampus.domain.JobType;
 
 import lombok.Data;
 
@@ -15,7 +15,7 @@ private Long id;   // 식별키
 	
 	private String name;    // 이름
 			
-	private String job;     // 직업
+	private JobType jobType;     // 직업
 	
 	private int age;        // 나이
 
