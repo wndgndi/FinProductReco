@@ -5,6 +5,7 @@ import org.modelmapper.ModelMapper;
 
 import org.springframework.stereotype.Service;
 import com.fastcampus.domain.User;
+import com.fastcampus.dto.UserDto;
 import com.fastcampus.persistence.UserRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -17,24 +18,26 @@ public class UserService {
 	
 	// 회원가입
 	@Transactional
-	public void insertUser(User user) {
-		user.setRole("USER");
+	public void insertUser(UserDto userDto) {
+		User user = modelMapper.map(userDto, User.class);
 		userRepository.save(user);
 	}
 	
 	// 유저 상세 조회
 	@Transactional(readOnly = true)
-	public User getUser(Long id) {
-		return userRepository.findById(id).get();
+	public UserDto getUser(Long id) {
+		User user = userRepository.findById(id).get();
+		UserDto userDto = modelMapper.map(user, UserDto.class);
+		return userDto;
 	}
 	
 	// 회원 정보 수정
 	@Transactional
-	public void updateUser(User user) {
-		User myUser = userRepository.findById(user.getId()).get();
-		myUser.setJob(user.getJob());
-		myUser.setName(user.getName());
-		myUser.setPassword(user.getPassword());
+	public void updateUser(UserDto userDto) {
+		User myUser = userRepository.findById(userDto.getId()).get();
+		myUser.setJob(userDto.getJob());
+		myUser.setName(userDto.getName());
+		myUser.setPassword(userDto.getPassword());
 	}
 	
 }
