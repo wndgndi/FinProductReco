@@ -7,8 +7,4 @@ import com.fastcampus.domain.Cart;
 
 @Repository
 public interface CartRepository extends JpaRepository<Cart, Long> { 
-	
-	void deleteById(Long id);
-	
-	
 }
