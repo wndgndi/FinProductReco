@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fastcampus.domain.Product;
+import com.fastcampus.domain.User;
 import com.fastcampus.dto.ProductDto;
 import com.fastcampus.persistence.ProductRepository;
 import com.fastcampus.security.jpa.UserDetailsImpl;
