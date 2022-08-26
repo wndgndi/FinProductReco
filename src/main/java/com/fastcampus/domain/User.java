@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Data
 @Table(name = "USERS")
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper=false) //Spring Audit 적용을 위한 Annotation
 public class User extends BaseTime {
 
 	@Id
