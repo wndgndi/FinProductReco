@@ -13,7 +13,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-    private static final String[] EXCLUDE_PATHS = {
+    //접근 제어 권한 없는 URI
+	private static final String[] EXCLUDE_PATHS = {
             "/users",
             "/error/**"
     };
@@ -27,6 +28,7 @@ public class WebConfig implements WebMvcConfigurer {
 						.excludePathPatterns(EXCLUDE_PATHS);
     }
     
+    //ModelMapper 빈 등록
     @Bean
 	ModelMapper modelMapper() {
 		return new ModelMapper();
