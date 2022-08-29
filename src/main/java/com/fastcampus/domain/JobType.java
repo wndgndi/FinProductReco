@@ -21,10 +21,6 @@ public enum JobType {
 
 	private String name;
 
-	public String getKey() {
-		return name();
-	}
-
 	public String getName() {
 		return name;
 	}
