@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Service
 public class UserService {
-	
+
 	private final UserRepository userRepository;
 	private final ModelMapper modelMapper;
 	
@@ -43,8 +43,8 @@ public class UserService {
 		String encodedPassword = user.getPassword();
 		return BCrypt.checkpw(password, encodedPassword);
 	}
-	
-	// 회원가입(아이디 유효성 검사, 비밀번호 암호화 추가)
+
+	//회원가입(아이디 유효성 검사, 비밀번호 암호화 추가)
 	@Transactional
 	public void insertUser(UserDto userDto) {
 		this.validate(userDto.getUsername());
@@ -70,7 +70,7 @@ public class UserService {
 			throw new IllegalStateException(USERNAME_EXIST_EXCEPTION_MSG);
 		}
 	}
-	
+
 	// 유저 상세 조회
 	@Transactional(readOnly = true)
 	public UserDto getUser(Long id) {
@@ -78,7 +78,7 @@ public class UserService {
 		UserDto userDto = modelMapper.map(user, UserDto.class);
 		return userDto;
 	}
-	
+
 	// 회원 정보 수정
 	@Transactional
 	public void updateUser(UserDto userDto) {
@@ -86,5 +86,6 @@ public class UserService {
 		myUser.setJob(userDto.getJob());
 		myUser.setName(userDto.getName());
 		myUser.setPassword(userDto.getPassword());
+		userRepository.save(myUser);
 	}
 }
