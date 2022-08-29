@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fastcampus.dto.UserDto;
-import com.fastcampus.jwt.JwtService;
+import com.fastcampus.jwt.service.JwtService;
 import com.fastcampus.service.UserService;
 
 //import io.swagger.annotations.Api;
