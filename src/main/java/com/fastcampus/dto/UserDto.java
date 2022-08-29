@@ -7,8 +7,9 @@ import lombok.Data;
 
 @Data
 public class UserDto {
-
-private Long id;   // 식별키
+	
+	@ApiModelProperty(value = "식별키", example = "0", required = true )
+	private Long id;   // 식별키
 	
 	@ApiModelProperty(value = "아이디", example = "asdfw", required = true )
 	private String username;    // 아이디
