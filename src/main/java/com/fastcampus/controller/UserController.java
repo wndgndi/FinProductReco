@@ -2,6 +2,7 @@ package com.fastcampus.controller;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,13 +12,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fastcampus.dto.UserDto;
 import com.fastcampus.jwt.JwtService;
-import com.fastcampus.jwt.Result;
 import com.fastcampus.service.UserService;
 
 //import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 
 //@Api(tags = {"User 정보를 제공하는 Controller"})
+@Controller
 @RequiredArgsConstructor
 public class UserController {
 	
@@ -27,22 +28,20 @@ public class UserController {
 	//로그인
 	@PostMapping("/login")
 	@ResponseBody
-    public Result login(String username, String password, HttpServletResponse response){
-    	Result result = Result.successInstance();
-        UserDto loginMember = userService.login(username, password);
-        String token = jwtService.create("user", loginMember);
+    public UserDto login(@RequestBody UserDto userDto, HttpServletResponse response){
+        UserDto loginMember = userService.login(userDto.getUsername(), userDto.getPassword());
+        String token = jwtService.create("user", loginMember); //토큰 생성
         response.setHeader("Authorization", token);
-        result.setData(loginMember);
-        return result;
+        System.out.println(token);
+        return loginMember;
     }
 	
 	// 회원가입
 	@PostMapping("/users")
 	@ResponseBody
-	public Result insertUser(@RequestBody UserDto userDto) {
-		Result result = Result.successInstance();
-		userService.insertUser(userDto);
-		return result;
+	public UserDto insertUser(@RequestBody UserDto userDto) {
+		UserDto insertedUser = userService.insertUser(userDto);
+		return insertedUser;
 	}
 	
 	// 회원 상세 조회
