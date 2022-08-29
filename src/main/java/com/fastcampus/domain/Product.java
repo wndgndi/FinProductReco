@@ -32,7 +32,7 @@ public class Product {
 	
 	private String agency; //대출 기관
 	
-	private Long cartCount; //장바구니 등록 수
+	private int cartCount; //장바구니 등록 수
 	
 	@Enumerated(EnumType.STRING)
 	private JobType job; //직업
@@ -44,13 +44,13 @@ public class Product {
 	private Cart cart;
 
 	//cartCount 증가
-	public void addCartCount(long count) {
+	public void addCartCount(int count) {
 		    this.cartCount += count;
     }
 	
 	//cartCount 감소
-	public void minusCartCount(long count) {
-        Long restCount = this.cartCount - count;
+	public void minusCartCount(int count) {
+        int restCount = this.cartCount - count;
         this.cartCount = restCount;
     }
 }
