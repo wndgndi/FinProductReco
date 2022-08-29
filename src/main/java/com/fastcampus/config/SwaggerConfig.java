@@ -7,6 +7,7 @@ import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -22,6 +23,7 @@ public class SwaggerConfig {
 		return new ApiInfoBuilder()
 									.title("금융상품 추천")
 									.description("금융상품 API")
+									.contact(new Contact("[오리무중]", "https://www.notion.so/Back-End-52baed6a80da4976b416c7abe3be61ed", "wndgn456@gmail.com" ))
 									.build();	
 	}
 	
@@ -32,7 +34,7 @@ public class SwaggerConfig {
 				.groupName("Mini Project")
 				.apiInfo(this.apiInfo())
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.fastcampus.controller"))
+				.apis(RequestHandlerSelectors.basePackage("com.fastcampus.controller")) // Swagger API 문서로 만들기 원하는 BasePackage 경로
 				.paths(PathSelectors.any())  // basePackage로부터 매핑된 resource를 문서화 시킴
 				.build();
 	}
