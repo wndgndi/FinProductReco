@@ -1,4 +1,4 @@
-package com.fastcampus.jwt;
+package com.fastcampus.jwt.domain;
 
 import org.springframework.http.HttpStatus;
 

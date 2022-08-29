@@ -1,4 +1,4 @@
-package com.fastcampus.jwt;
+package com.fastcampus.jwt.service;
 
 import java.io.UnsupportedEncodingException;
 import java.util.LinkedHashMap;
@@ -21,7 +21,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Service
 public class JwtService{
 
-	private static final String SALT =  "orimujung";
+	private static final String SALT = "orimujung";
 	
     //JWT 생성
 	public <T> String create(String key, T data){

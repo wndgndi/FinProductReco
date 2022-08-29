@@ -1,12 +1,11 @@
 package com.fastcampus.jwt.exception;
 
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fastcampus.jwt.Result;
+import com.fastcampus.jwt.domain.Result;
 
 @ControllerAdvice
 public class ExceptionController {
@@ -39,5 +38,5 @@ public class ExceptionController {
     private void handleLog(Exception e){
     	
     	System.out.println("Error 발생");
-        }
+    }
 }
