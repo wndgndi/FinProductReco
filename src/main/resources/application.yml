@@ -9,6 +9,10 @@ spring:
     url: jdbc:h2:mem://localhost/~/test
     username: sa
     password:
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+    
     
 # JPA 설정
   jpa:
