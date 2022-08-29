@@ -18,7 +18,7 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "product_id")
-	private Long id;
+	private Long id; //기본키
   
 	private long interestRate; //이율
 	

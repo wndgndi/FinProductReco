@@ -11,10 +11,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
 @Table(name = "USERS")
+@EqualsAndHashCode(callSuper=false) //Spring Audit 적용을 위한 Annotation
 public class User extends BaseTime {
 
 	@Id
@@ -22,13 +24,10 @@ public class User extends BaseTime {
 	@Column(name = "user_Id", nullable = false)
 	private Long id; //기본키
 
-	@Column(name = "username", nullable = false, length = 50, unique = true)
 	private String username; //유저네임
 
-	@Column(name = "password", nullable = false)
 	private String password; //비밀번호
 
-	@Column(name = "name", nullable = false)
 	private String name; //유저 이름
 
 	private String job; //유저 직업

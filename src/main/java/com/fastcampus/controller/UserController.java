@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fastcampus.domain.User;
 import com.fastcampus.dto.UserDto;
 import com.fastcampus.service.UserService;
 
@@ -23,9 +22,6 @@ public class UserController {
 	
 	private final UserService userService;
 
-	private final ModelMapper modelMapper;
-
-	
 	// 회원가입
 	@PostMapping("/users")
 	public void insertUser(@RequestBody UserDto userDto) {

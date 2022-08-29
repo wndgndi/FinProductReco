@@ -39,5 +39,4 @@ public class UserService {
 		myUser.setName(userDto.getName());
 		myUser.setPassword(userDto.getPassword());
 	}
-	
 }
