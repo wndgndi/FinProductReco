@@ -37,7 +37,7 @@ public class ProductController {
 	@GetMapping("/products/recos")
 	@ResponseBody
 	public List<ProductDto> getRecoProducts(User user) {
-		return productService.getRecoProducts(userDetails);
+		return productService.getRecoProducts(user);
 	}
 	
 	//주력 상품 랜덤 추천
