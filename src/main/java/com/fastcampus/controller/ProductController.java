@@ -1,7 +1,6 @@
 package com.fastcampus.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fastcampus.dto.ProductDto;
-import com.fastcampus.jwt.JwtService;
+import com.fastcampus.jwt.service.JwtService;
 import com.fastcampus.service.ProductService;
 
 import lombok.RequiredArgsConstructor;
