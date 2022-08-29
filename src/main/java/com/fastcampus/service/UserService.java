@@ -21,17 +21,17 @@ public class UserService {
 	private final UserRepository userRepository;
 	private final ModelMapper modelMapper;
 	
-	private static final String SIGNIN_EXCEPTION_MSG = "로그인정보가 일치하지 않습니다.";
+	private static final String LOGIN_EXCEPTION_MSG = "로그인정보가 일치하지 않습니다.";
 	private static final String USERNAME_EXIST_EXCEPTION_MSG = "이미 계정이 존재합니다.";
 	
 	//로그인
 	@Transactional
 	public UserDto login(String username, String password) {
 		User user = userRepository.findByUsername(username).get();
-		Objects.requireNonNull(user, SIGNIN_EXCEPTION_MSG);
+		Objects.requireNonNull(user, LOGIN_EXCEPTION_MSG);
 		
 		if( ! this.isAccordPassword(user, password)){
-			throw new IllegalStateException(SIGNIN_EXCEPTION_MSG);
+			throw new IllegalStateException(LOGIN_EXCEPTION_MSG);
 		}
 		UserDto checkedUserDto = modelMapper.map(user, UserDto.class);
 		
@@ -46,12 +46,13 @@ public class UserService {
 
 	//회원가입(아이디 유효성 검사, 비밀번호 암호화 추가)
 	@Transactional
-	public void insertUser(UserDto userDto) {
+	public UserDto insertUser(UserDto userDto) {
 		this.validate(userDto.getUsername());
-		String encodedPassword =  BCrypt.hashpw(userDto.getPassword(), BCrypt.gensalt());
+		String encodedPassword =  BCrypt.hashpw(userDto.getPassword(), BCrypt.gensalt()); //비밀번호 암호화
 		userDto.setPassword(encodedPassword);
 		User user = modelMapper.map(userDto, User.class);
 		userRepository.save(user);
+		return userDto;
 	}
 
 	//아이디 유효성 검사
