@@ -35,9 +35,9 @@ public class UserService {
 	@Transactional
 	public void updateUser(UserDto userDto) {
 		User myUser = userRepository.findById(userDto.getId()).get();
-		myUser.setJobType(userDto.getJobType());
+		myUser.setJob(userDto.getJob());
 		myUser.setName(userDto.getName());
 		myUser.setPassword(userDto.getPassword());
+		userRepository.save(myUser);
 	}
-
 }

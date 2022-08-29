@@ -25,5 +25,4 @@ public class CartService {
         Optional<Cart> cart = cartRepository.findById(cartId);
         cart.get().cancel(id, cartId);
     }
-
 }

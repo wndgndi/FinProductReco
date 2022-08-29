@@ -18,6 +18,5 @@ private Long id;   // 식별키
 	private JobType job;     // 직업
 	
 	private int age;        // 나이
-
 }
 
