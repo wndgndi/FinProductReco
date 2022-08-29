@@ -24,8 +24,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Cart {
 	
-	private CartRepository cartRepository;
-	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cart_id")
@@ -56,9 +54,6 @@ public class Cart {
 	
 	// 비즈니스 메소드 (카트에서 삭제 -> 테이블의 변화)  
 	public void cancel(Long id, Long count) {
-		
-		// 카트 테이블에서 삭제 
-		cartRepository.deleteById(id);
 		
 		// Product의 cartCount -1
         for (Product product : products) {
