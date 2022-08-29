@@ -2,12 +2,12 @@ package com.fastcampus.controller;
 
 import java.util.List;
 
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fastcampus.domain.User;
 import com.fastcampus.dto.ProductDto;
 import com.fastcampus.service.ProductService;
 
