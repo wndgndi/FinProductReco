@@ -3,6 +3,7 @@ package com.fastcampus.config;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -13,8 +14,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-    //접근 제어 권한 없는 URI
+    //접근 제한 없는 URI
 	private static final String[] EXCLUDE_PATHS = {
+			"/login",
             "/users",
             "/error/**"
     };
