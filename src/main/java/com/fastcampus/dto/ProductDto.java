@@ -21,7 +21,7 @@ public class ProductDto {
 	
 	private Long cartCount; //장바구니 등록 수
 	
-	private JobType jopType; //직업
+	private JobType jop; //직업
 	
 	private int age; //나이
 }

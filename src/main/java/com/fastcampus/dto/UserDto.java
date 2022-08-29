@@ -15,7 +15,7 @@ private Long id;   // 식별키
 	
 	private String name;    // 이름
 			
-	private JobType jobType;     // 직업
+	private JobType job;     // 직업
 	
 	private int age;        // 나이
 

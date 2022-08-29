@@ -18,7 +18,7 @@ public interface ProductRepository extends JpaRepository<Product, Long>{
 	List<Product> findByAge(int age);
 	
 	//직업에 맞는 상품 검색
-	List<Product> findByJob(JobType jobType);
+	List<Product> findByJob(JobType job);
 
 	//랜덤 상품 출력
 	@Query("select o from Product o where id in :ids")
