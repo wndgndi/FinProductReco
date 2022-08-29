@@ -1,6 +1,6 @@
 package com.fastcampus.dto;
 
-import javax.persistence.Column;
+import com.fastcampus.domain.JobType;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -18,12 +18,11 @@ private Long id;   // 식별키
 	
 	@ApiModelProperty(value = "회원 이름", example = "홍길동", required = true )
 	private String name;    // 이름
-			
+
 	@ApiModelProperty(value = "회원 직업", example = "직장인", required = true )
-	private String job;     // 직업
-	
+	private JobType job;     // 직업
+
 	@ApiModelProperty(value = "회원 나이", example = "20", required = true )
 	private int age;        // 나이
-
 }
 

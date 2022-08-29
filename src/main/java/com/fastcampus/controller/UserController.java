@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fastcampus.domain.User;
 import com.fastcampus.dto.UserDto;
 import com.fastcampus.service.UserService;
 
@@ -25,9 +24,6 @@ public class UserController {
 	
 	private final UserService userService;
 
-	private final ModelMapper modelMapper;
-
-	
 	// 회원가입
 	@ApiOperation(value = "회원가입", notes = "회원 정보를 받아서 새로운 회원을 등록한다.")
 	@ApiImplicitParam(name = "userDto", value = "새로 추가되는 회원 정보", dataType = "UserDto")

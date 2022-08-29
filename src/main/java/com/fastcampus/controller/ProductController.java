@@ -36,7 +36,7 @@ public class ProductController {
 	//유저별 추천 상품 출력
 	@GetMapping("/products/recos")
 	@ResponseBody
-	public List<ProductDto> getRecoProducts(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+	public List<ProductDto> getRecoProducts(User user) {
 		return productService.getRecoProducts(userDetails);
 	}
 	
