@@ -17,7 +17,6 @@ import lombok.RequiredArgsConstructor;
 public class CartService {
 	
 	private final CartRepository cartRepository;
-	private final ProductRepository productRepository;
 	
 	// 카트에서 삭제 
 	@Transactional

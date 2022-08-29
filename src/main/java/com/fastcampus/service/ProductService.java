@@ -13,7 +13,6 @@ import com.fastcampus.domain.Product;
 import com.fastcampus.domain.User;
 import com.fastcampus.dto.ProductDto;
 import com.fastcampus.persistence.ProductRepository;
-import com.fastcampus.security.jpa.UserDetailsImpl;
 
 import lombok.RequiredArgsConstructor;
 
@@ -44,8 +43,7 @@ public class ProductService {
 	
 	//유저별 추천 상품 추천
 	@Transactional(readOnly=true)
-	public List<ProductDto> getRecoProducts(UserDetailsImpl userDetails){
-		User user = userDetails.getUser();
+	public List<ProductDto> getRecoProducts(User user){
 		List<Product> recoProducts = new ArrayList<Product>();
 		recoProducts.addAll(productRepository.findByJob(user.getJob()));
 		recoProducts.addAll(productRepository.findByAge(user.getAge()));
