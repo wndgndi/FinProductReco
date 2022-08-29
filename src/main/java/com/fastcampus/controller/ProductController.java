@@ -1,14 +1,15 @@
 package com.fastcampus.controller;
 
 import java.util.List;
+import java.util.Map;
 
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fastcampus.dto.ProductDto;
+import com.fastcampus.jwt.JwtService;
 import com.fastcampus.service.ProductService;
 
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 public class ProductController {
 	
 	private final ProductService productService;
+	private final JwtService jwtService;
 	
 	//모든 상품 조회
 	@GetMapping("/products")
@@ -36,8 +38,8 @@ public class ProductController {
 	//유저별 추천 상품 출력
 	@GetMapping("/products/recos")
 	@ResponseBody
-	public List<ProductDto> getRecoProducts(User user) {
-		return productService.getRecoProducts(userDetails);
+	public List<ProductDto> getRecoProducts() {
+		return productService.getRecoProducts(jwtService.getUser());
 	}
 	
 	//주력 상품 랜덤 추천
