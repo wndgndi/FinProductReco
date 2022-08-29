@@ -32,7 +32,7 @@ public class Cart {
 	private Long id;
 	
 	@OneToMany(mappedBy = "cart", fetch = FetchType.LAZY)
-	private List<Product> products;
+	private List<Product> products = new ArrayList<>();
 	
 	@OneToOne(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private User user;
