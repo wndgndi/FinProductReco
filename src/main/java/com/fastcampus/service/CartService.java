@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.fastcampus.domain.Cart;
 import com.fastcampus.persistence.CartRepository;
-import com.fastcampus.persistence.ProductRepository;
 
 import lombok.RequiredArgsConstructor;
 
