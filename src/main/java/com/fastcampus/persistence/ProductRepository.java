@@ -24,5 +24,5 @@ public interface ProductRepository extends JpaRepository<Product, Long>{
 
 	//랜덤 상품 출력
 	@Query("select o from Product o where id in :ids")
-	List<Product> findByRamdom(@Param("ids") HashSet<Integer> hashSet);
+	List<Product> findByRamdom(@Param("ids") HashSet<Long> hashSet);
 }
