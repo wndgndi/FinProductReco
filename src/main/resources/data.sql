@@ -14,7 +14,7 @@ create table Product (
     agency varchar(255),
     amount bigint not null,
     cartCount integer,
-    interestRate bigint not null,
+    interestRate float not null,
     job varchar(255),
     name varchar(255),
     repayPeriod bigint not null,
