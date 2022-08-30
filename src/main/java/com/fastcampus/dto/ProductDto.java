@@ -30,7 +30,7 @@ public class ProductDto {
 	private Long cartCount; //장바구니 등록 수
 	
 	@ApiModelProperty(value = "직업", example = "직장인", required = true )
-	private JobType jop; //직업
+	private JobType job; //직업
 	
 	@ApiModelProperty(value = "나이", example = "21", required = true )
 	private int age; //나이
