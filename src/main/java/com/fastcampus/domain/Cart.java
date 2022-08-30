@@ -1,8 +1,8 @@
 package com.fastcampus.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,11 +30,8 @@ public class Cart {
 	@OneToMany(mappedBy = "cart", fetch = FetchType.LAZY)
 	private List<Product> products = new ArrayList<>();
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "cart")
 	@JoinColumn(name="user_id")
-	private User user;
-	
-	@OneToOne(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private User user;
 	
 	// 편의 메소드
@@ -55,7 +52,7 @@ public class Cart {
     }
 	
 	// 비즈니스 메소드 (카트에서 삭제 -> 테이블의 변화)  
-	public void cancel(Long id, Long count) {
+	public void cancel(Long id, int count) {
 		
 		// Product의 cartCount -1
         for (Product product : products) {
