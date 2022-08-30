@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fastcampus.domain.User;
 import com.fastcampus.dto.ProductDto;
+import com.fastcampus.jwt.service.JwtService;
 import com.fastcampus.service.ProductService;
 
 import io.swagger.annotations.Api;
@@ -22,6 +23,7 @@ import lombok.RequiredArgsConstructor;
 public class ProductController {
 	
 	private final ProductService productService;
+	private final JwtService jwtService;
 	
 	//모든 상품 조회
 	@ApiOperation(value = "모든 상품 조회", notes = "등록된 모든 상품들을 조회한다.")
@@ -44,8 +46,9 @@ public class ProductController {
 	@ApiOperation(value = "추천 상품", notes = "회원에 따라 적합한 상품을 추천해준다.")
 	@GetMapping("/products/recos")
 	@ResponseBody
-	public List<ProductDto> getRecoProducts(User user) {
-		return productService.getRecoProducts(user);
+	public List<ProductDto> getRecoProducts() {
+		return productService.getRecoProducts(jwtService.getUser());
+
 	}
 	
 	//주력 상품 랜덤 추천

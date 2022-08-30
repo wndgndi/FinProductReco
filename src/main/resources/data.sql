@@ -51,4 +51,10 @@ alter table USERS
    references Cart;
    
 INSERT INTO USERS (age, job, name, password, username) 
-VALUES(12, 'student', 'testname', 'test123', 'test');
+VALUES(12, 'STUDENT', 'testname', '$2a$12$2PAOtUoIWx48Rz.QnRwMsOfhuDYJ6HO2FwlDOngN1tHuvQG4vg0Ae
+', 'test');
+
+INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
+VALUES('FAST은행',2000000,1.5,'프리랜서','프리랜서를 위한 대출',150, 30);
+
+

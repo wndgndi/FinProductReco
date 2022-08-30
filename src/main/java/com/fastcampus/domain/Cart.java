@@ -1,6 +1,5 @@
 package com.fastcampus.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,10 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
-import com.fastcampus.persistence.CartRepository;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -31,6 +29,10 @@ public class Cart {
 	
 	@OneToMany(mappedBy = "cart", fetch = FetchType.LAZY)
 	private List<Product> products = new ArrayList<>();
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="user_id")
+	private User user;
 	
 	@OneToOne(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private User user;
