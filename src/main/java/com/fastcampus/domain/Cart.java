@@ -1,8 +1,5 @@
-
-
 package com.fastcampus.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,9 +8,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
-import com.fastcampus.persistence.CartRepository;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -24,15 +21,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Cart {
 	
-	private CartRepository cartRepository;
-	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cart_id")
 	private Long id;
 	
-	@OneToOne(mappedBy = "delivery", fetch = FetchType.EAGER)
-	private List<Product> products = new ArrayList<>();
+	@OneToMany(mappedBy = "cart")
+	private List<Product> products;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="user_id")
+	private User user;
 	
 	// 편의 메소드
 	// 객체에서 양방향 연관관계는 양쪽에 다 값을 세팅해야 하므로 편의 메소드로 한번에 세팅 
@@ -49,17 +48,5 @@ public class Cart {
             cart.addProduct(product);
         }
         return cart;
-    }
-	
-	// 비즈니스 메소드 (카트에서 삭제 -> 테이블의 변화)  
-	public void cancel(Long id, Long count) {
-		
-		// 카트 테이블에서 삭제 
-		cartRepository.deleteById(id);
-		
-		// Product의 cartCount -1
-        for (Product product : products) {
-            product.addCartCount(count);   
-        }
     }
 }

@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class UserDto {
 
-private Long id;   // 식별키
+	private Long id;   // 식별키
 	
 	private String username;    // 아이디
 	
