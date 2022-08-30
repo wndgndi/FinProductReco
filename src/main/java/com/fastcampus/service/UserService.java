@@ -8,8 +8,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fastcampus.domain.Cart;
 import com.fastcampus.domain.User;
 import com.fastcampus.dto.UserDto;
+import com.fastcampus.persistence.CartRepository;
 import com.fastcampus.persistence.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -19,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
 
 	private final UserRepository userRepository;
+	private final CartRepository cartRepository;
 	private final ModelMapper modelMapper;
 	
 	private static final String LOGIN_EXCEPTION_MSG = "로그인정보가 일치하지 않습니다.";
@@ -52,8 +55,9 @@ public class UserService {
 		userDto.setPassword(encodedPassword);
 		User user = modelMapper.map(userDto, User.class);
 		userRepository.save(user);
-		// 기본티 할당된 UserDto 리턴
+		// 기본티 할당된 UserDto 리턴, 및 카트 생성
 		User returnUser=userRepository.findByUsername(userDto.getUsername()).get(); 
+		cartRepository.save(new Cart(returnUser));
 		UserDto returnUserDto = modelMapper.map(returnUser, UserDto.class);
 		return returnUserDto;
 	}
