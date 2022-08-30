@@ -52,7 +52,10 @@ public class UserService {
 		userDto.setPassword(encodedPassword);
 		User user = modelMapper.map(userDto, User.class);
 		userRepository.save(user);
-		return userDto;
+		// 기본티 할당된 UserDto 리턴
+		User returnUser=userRepository.findByUsername(userDto.getUsername()).get(); 
+		UserDto returnUserDto = modelMapper.map(returnUser, UserDto.class);
+		return returnUserDto;
 	}
 
 	//아이디 유효성 검사
