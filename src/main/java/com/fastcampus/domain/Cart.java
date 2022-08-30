@@ -2,6 +2,7 @@ package com.fastcampus.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,11 +27,14 @@ public class Cart {
 	@Column(name = "cart_id")
 	private Long id;
 	
-	@OneToMany(mappedBy = "cart")
-	private List<Product> products;
+	@OneToMany(mappedBy = "cart", fetch = FetchType.LAZY)
+	private List<Product> products = new ArrayList<>();
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id")
+	private User user;
+	
+	@OneToOne(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private User user;
 	
 	// 편의 메소드
@@ -48,5 +52,14 @@ public class Cart {
             cart.addProduct(product);
         }
         return cart;
+    }
+	
+	// 비즈니스 메소드 (카트에서 삭제 -> 테이블의 변화)  
+	public void cancel(Long id, Long count) {
+		
+		// Product의 cartCount -1
+        for (Product product : products) {
+            product.addCartCount(count);   
+        }
     }
 }
