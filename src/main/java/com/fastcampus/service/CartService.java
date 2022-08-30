@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.fastcampus.domain.Cart;
 import com.fastcampus.persistence.CartRepository;
-import com.fastcampus.persistence.ProductRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,6 +21,5 @@ public class CartService {
 	@Transactional
     public void cancelCart(Long id, Long cartId) {
         Optional<Cart> cart = cartRepository.findById(cartId);
-        cart.get().cancel(id, cartId);
     }
 }

@@ -39,6 +39,6 @@ public class User extends BaseTime {
 	private int age; //유저 나이
 	
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="CART_ID")
+	@JoinColumn(name="cart_id")
 	private Cart cart;
 }
