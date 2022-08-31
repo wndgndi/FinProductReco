@@ -43,6 +43,7 @@ public class Product {
 	@JoinColumn(name = "cart_id")
 	private Cart cart;
 
+	/*
 	//cartCount 증가
 	public void addCartCount(long count) {
 		    this.cartCount += count;
@@ -53,4 +54,10 @@ public class Product {
         long restCount = this.cartCount - count;
         this.cartCount = restCount;
     }
+    */
+	
+	// 카트에서 상품 삭제 
+	
+	
+	
 }

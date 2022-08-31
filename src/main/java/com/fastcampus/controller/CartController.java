@@ -15,6 +15,8 @@ import com.fastcampus.domain.Cart;
 import com.fastcampus.domain.JobType;
 import com.fastcampus.domain.Product;
 import com.fastcampus.persistence.CartRepository;
+import com.fastcampus.persistence.ProductRepository;
+import com.fastcampus.service.CartService;
 
 import lombok.Data;
 import lombok.Getter;
@@ -25,6 +27,8 @@ import lombok.RequiredArgsConstructor;
 public class CartController {
 	
 	private final CartRepository cartRepository;
+	private final CartService cartService;
+	private final ProductRepository productRepository;
 	
 	// 카트에서 상품목록 조회 
 	@GetMapping("/carts")
@@ -79,8 +83,7 @@ public class CartController {
     }
 	
     // 카트에서 상품 삭제
-    @DeleteMapping("/carts/{product.id}")
-    public String cancelCart(@PathVariable("cartId") Long cartId) {
-        cartService.cancelCart(cartId);
-    }
+    // @DeleteMapping("/carts/{product.id}")
+    
+    
 }
