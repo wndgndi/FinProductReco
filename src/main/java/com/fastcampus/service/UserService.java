@@ -8,8 +8,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fastcampus.domain.Cart;
 import com.fastcampus.domain.User;
 import com.fastcampus.dto.UserDto;
+import com.fastcampus.persistence.CartRepository;
 import com.fastcampus.persistence.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -20,6 +22,7 @@ public class UserService {
 
 	private final UserRepository userRepository;
 	private final ModelMapper modelMapper;
+	private final CartRepository cartRepository;
 	
 	private static final String LOGIN_EXCEPTION_MSG = "로그인정보가 일치하지 않습니다.";
 	private static final String USERNAME_EXIST_EXCEPTION_MSG = "이미 계정이 존재합니다.";
@@ -52,7 +55,11 @@ public class UserService {
 		userDto.setPassword(encodedPassword);
 		User user = modelMapper.map(userDto, User.class);
 		userRepository.save(user);
-		return userDto;
+		// 기본티 할당된 UserDto 리턴, 및 카트 생성
+		User returnUser=userRepository.findByUsername(userDto.getUsername()).get(); 
+		cartRepository.save(new Cart(returnUser));
+		UserDto returnUserDto = modelMapper.map(returnUser, UserDto.class);
+		return returnUserDto;
 	}
 
 	//아이디 유효성 검사
@@ -82,11 +89,13 @@ public class UserService {
 
 	// 회원 정보 수정
 	@Transactional
-	public void updateUser(UserDto userDto) {
-		User myUser = userRepository.findById(userDto.getId()).get();
+	public UserDto updateUser(UserDto userDto, Long id) {  
+		User myUser = userRepository.findById(id).get();  
 		myUser.setJob(userDto.getJob());
 		myUser.setName(userDto.getName());
 		myUser.setPassword(userDto.getPassword());
 		userRepository.save(myUser);
+		UserDto myUserDto = modelMapper.map(myUser, UserDto.class);
+		return myUserDto;
 	}
 }
