@@ -1,8 +1,5 @@
 package com.fastcampus.service;
 
-import java.util.List;
-import java.util.Optional;
-
 import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
@@ -12,7 +9,6 @@ import com.fastcampus.domain.Cart;
 import com.fastcampus.domain.Product;
 import com.fastcampus.dto.ProductDto;
 import com.fastcampus.persistence.CartRepository;
-import com.fastcampus.persistence.ProductRepository;
 
 import lombok.RequiredArgsConstructor;
 
