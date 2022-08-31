@@ -40,7 +40,7 @@ public class CartService {
 		cartRepository.save(findCart);
     }
 	
-	// 카트 모든 내용 삭제
+	// 카트 모든 상품 삭제
 	@Transactional
 	public void deleteAllInCart(Long cartId) {
 		Cart findCart = cartRepository.findById(cartId).get();
