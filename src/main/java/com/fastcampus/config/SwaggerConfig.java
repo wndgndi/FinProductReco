@@ -13,18 +13,17 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
-@EnableSwagger2 // 이 어노테이션을 붙이지 않으면 404 에러 발생
-                // Swagger2를 사용하겠다는 어노테이션
+@EnableSwagger2 // 이 어노테이션을 붙이지 않으면 404 에러 발생, // Swagger2를 사용하겠다는 어노테이션
 @Configuration
 public class SwaggerConfig {
 
 	// Swagger-UI에서 메인으로 보여질 내용을 설정
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-									.title("금융상품 추천")
-									.description("금융상품 API")
-									.contact(new Contact("[오리무중]", "https://www.notion.so/Back-End-52baed6a80da4976b416c7abe3be61ed", "wndgn456@gmail.com" ))
-									.build();	
+				.title("금융상품 추천")
+				.description("금융상품 API")
+				.contact(new Contact("[오리무중]", "https://www.notion.so/Back-End-52baed6a80da4976b416c7abe3be61ed", "wndgn456@gmail.com" ))
+				.build();	
 	}
 	
 	// Swagger 설정

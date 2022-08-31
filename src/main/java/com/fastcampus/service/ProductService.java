@@ -58,10 +58,11 @@ public class ProductService {
 	@Transactional(readOnly=true)
 	public List<ProductDto> getPromoProducts(){
 		HashSet<Long> nums = new HashSet<Long>(6);
-		
-		while(nums.size()<6) {
+
+		while(nums.size()<6){
 			nums.add((long)(Math.random()*15));
 		}
+
 		List<Product> promoProducts = productRepository.findByRamdom(nums);
 		List<ProductDto> promoProductDtos = promoProducts.stream().
 				map(product -> modelMapper.map(product, ProductDto.class)).collect(Collectors.toList());
