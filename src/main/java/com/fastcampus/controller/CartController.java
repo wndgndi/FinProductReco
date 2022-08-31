@@ -6,7 +6,9 @@ import java.util.stream.Collectors;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fastcampus.domain.Cart;
@@ -24,6 +26,7 @@ public class CartController {
 	
 	private final CartRepository cartRepository;
 	
+	// 카트에서 상품목록 조회 
 	@GetMapping("/carts")
     public List<CartDto> ordersV2() {
         List<Cart> carts = cartRepository.findAll();
@@ -75,4 +78,9 @@ public class CartController {
         }
     }
 	
+    // 카트에서 상품 삭제
+    @DeleteMapping("/carts/{product.id}")
+    public String cancelCart(@PathVariable("cartId") Long cartId) {
+        cartService.cancelCart(cartId);
+    }
 }
