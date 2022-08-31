@@ -27,6 +27,7 @@ public class UserController {
 	private final UserService userService;
 	private final JwtService jwtService;
 	
+	
 	//로그인
 	@PostMapping("/login")
 	@ResponseBody
@@ -37,6 +38,7 @@ public class UserController {
         System.out.println(token);
         return loginMember;
     }
+    
 	
 	// 회원가입
 	@ApiOperation(value = "회원가입", notes = "회원 정보를 받아서 새로운 회원을 등록한다.")
@@ -48,6 +50,7 @@ public class UserController {
 		return insertedUser;
 	}
 	
+	
 	// 회원 상세 조회
 	@ApiOperation(value = "회원 상세 조회", notes = "회원의 Id를 통해 회원의 정보를 조회한다.")
 	@ApiImplicitParam(name = "id", value = "회원 정보를 가져오기 위한 Id", dataType = "Long", paramType = "path")
@@ -56,6 +59,35 @@ public class UserController {
 	public UserDto getUser(@PathVariable Long id) {
 		return userService.getUser(id);
 	}
+	
+	/*
+	// 회원 상세 조회
+	@GetMapping("/users")
+    public Result users() {
+
+        List<User> findUsers = userService.findUsers();
+        List<UserDto> collect = findUsers.stream()
+                .map(u -> new UserDto(u.getName()))
+                .collect(Collectors.toList());    
+
+        return new Result(collect);    
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class Result<T> {   
+        private T data;
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class UserDto {
+    	private String name;
+        // private String username;
+        // private JobType job;
+        
+    }
+	*/
 	
 	// 회원 정보 수정
 	@ApiOperation(value = "회원 정보 수정", notes = "회원의 수정된 정보들을 받아서 수정한다.")

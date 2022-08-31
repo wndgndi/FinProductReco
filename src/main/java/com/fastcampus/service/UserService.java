@@ -1,5 +1,6 @@
 package com.fastcampus.service;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -72,6 +73,7 @@ public class UserService {
 		}
 	}
 
+	
 	// 유저 상세 조회
 	@Transactional(readOnly = true)
 	public UserDto getUser(Long id) {
@@ -79,6 +81,13 @@ public class UserService {
 		UserDto userDto = modelMapper.map(user, UserDto.class);
 		return userDto;
 	}
+	
+	/*
+	// 회원 상세 조회
+	public List<User> findUsers() {
+        return userRepository.findAll();
+    }
+    */
 
 	// 회원 정보 수정
 	@Transactional

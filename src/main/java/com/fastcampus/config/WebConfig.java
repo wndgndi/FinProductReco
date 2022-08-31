@@ -16,8 +16,9 @@ public class WebConfig implements WebMvcConfigurer {
     //접근 제한 없는 URI
 	private static final String[] EXCLUDE_PATHS = {
 			"/login",
-            "/users",
-            "/error/**"
+            "/user",
+            "/error/**",
+            "/products"    // 임시 허가 
     };
     
     private final JwtInterceptor jwtInterceptor;

@@ -1,17 +1,15 @@
 package com.fastcampus.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -30,13 +28,6 @@ public class Cart {
 	@OneToMany(mappedBy = "cart", fetch = FetchType.LAZY)
 	private List<Product> products = new ArrayList<>();
 	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="user_id")
-	private User user;
-	
-	@OneToOne(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private User user;
-	
 	// 편의 메소드
 	// 객체에서 양방향 연관관계는 양쪽에 다 값을 세팅해야 하므로 편의 메소드로 한번에 세팅 
 	public void addProduct(Product product) {
@@ -54,6 +45,7 @@ public class Cart {
         return cart;
     }
 	
+	/*
 	// 비즈니스 메소드 (카트에서 삭제 -> 테이블의 변화)  
 	public void cancel(Long id, Long count) {
 		
@@ -62,4 +54,5 @@ public class Cart {
             product.addCartCount(count);   
         }
     }
+    */
 }
