@@ -21,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
 
 	private final UserRepository userRepository;
+	private final CartRepository cartRepository;
 	private final ModelMapper modelMapper;
 	private final CartRepository cartRepository;
 	

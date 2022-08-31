@@ -74,7 +74,6 @@ public class JwtService{
 	}
 	
 	public UserDto getUserDto() {
-		return (UserDto) this.get("user");
+		return (UserDto)this.get("user");
 	}
-	
 }

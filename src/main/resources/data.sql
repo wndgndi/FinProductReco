@@ -47,7 +47,7 @@ alter table USERS
    add constraint FKq4iff8ul3mx5xybcr10dtqooa
    foreign key (cart_id)
    references Cart;
-   
+
 INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
 VALUES('FAST은행',2000000,1.5,'FREELANCER','프리랜서를 위한 대출',150, 30);
 INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
@@ -70,13 +70,16 @@ INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
 VALUES('신한은행',500000,1.6,'FREELANCER','프리랜서 든든 신용대출',2920, 30);
 INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
 VALUES('카카오뱅크',3000000,1.8,'UNEMPLOYED','취업 햇살론',2555, 20);
-INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
+INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age) 
 VALUES('농협은행',3000000,3.12,'BUSINESS','개인사업자 대출',150,20);
-INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
+INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age) 
 VALUES('농협은행',1500000,1.78,'EMPLOYEE','근로자안정금 대출',73,32);
-INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
+INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age) 
 VALUES('하나은행',4500000,3.46,'STUDENT','학자금 대출',150,20);
-INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
+INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age) 
 VALUES('신한은행',1200000,2.43,'FREELANCER','프리랜서를 위한 신용대출',150,34);
-INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
+INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age) 
 VALUES('우리은행',400000,4.5,'UNEMPLOYED','취준생을 위한 청년대출',300,27);
+
+INSERT INTO USERS (age, job, name, password, username) 
+VALUES(20,'UNEMPLOYED','aa맨','$2a$10$h7.nKr37ZcmskzJR7DKFteXRMvutoh5Wgg.Gx63wYi7wJUR1mAT2.','aaa');
