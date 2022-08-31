@@ -13,7 +13,7 @@ create table Product (
     agency varchar(255),
     amount bigint not null,
     cartCount integer,
-    interestRate float not null,
+    interestRate Decimal(6,3) not null,
     job varchar(255),
     name varchar(255),
     repayPeriod bigint not null,
@@ -80,3 +80,5 @@ VALUES('우리은행',400000,4.5,'UNEMPLOYED','취준생을 위한 청년대출'
 
 INSERT INTO USERS (age, job, name, password, username) 
 VALUES(20,'UNEMPLOYED','aa맨','$2a$10$h7.nKr37ZcmskzJR7DKFteXRMvutoh5Wgg.Gx63wYi7wJUR1mAT2.','aaa');
+
+INSERT INTO CART(cart_id) VALUES(1);
