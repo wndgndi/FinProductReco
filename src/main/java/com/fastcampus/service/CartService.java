@@ -22,4 +22,10 @@ public class CartService {
     public void cancelCart(Long id, Long cartId) {
         Optional<Cart> cart = cartRepository.findById(cartId);
     }
+	
+	// 카트 모든 내용 삭제
+	@Transactional
+	public void deleteAllCart() {
+		
+	}
 }
