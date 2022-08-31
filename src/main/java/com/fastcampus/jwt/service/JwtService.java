@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.fastcampus.domain.User;
+import com.fastcampus.dto.UserDto;
 import com.fastcampus.jwt.exception.UnauthorizedException;
 
 import io.jsonwebtoken.Claims;
@@ -73,8 +73,8 @@ public class JwtService{
 		return value;
 	}
 	
-	public User getUser() {
-		return (User) this.get("user");
+	public UserDto getUserDto() {
+		return (UserDto) this.get("user");
 	}
 	
 }
