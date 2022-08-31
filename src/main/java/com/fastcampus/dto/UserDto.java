@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class UserDto {
 
-	@ApiModelProperty(value = "식별키", example = "0", required = true )
+	@ApiModelProperty(value = "식별키", example = "1", required = true )
 	private Long id;   // 식별키
 	
 	@ApiModelProperty(value = "아이디", example = "asdfw", required = true )
@@ -20,7 +20,7 @@ public class UserDto {
 	@ApiModelProperty(value = "이름", example = "홍길동", required = true )
 	private String name;    // 이름
 
-	@ApiModelProperty(value = "직업", example = "직장인", required = true )
+	@ApiModelProperty(value = "직업", example = "BUSINESS", required = true )
 	private JobType job;     // 직업
 
 	@ApiModelProperty(value = "나이", example = "20", required = true )
