@@ -50,6 +50,7 @@ alter table USERS
    foreign key (cart_id) 
    references Cart;
  
+<<<<<<< HEAD
 INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
 VALUES('FAST은행',2000000,1.5,'FREELANCER','프리랜서를 위한 대출',150, 30);
 INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
@@ -59,6 +60,17 @@ VALUES('신한은행',3000000,1.5,'STUDENT','대학생을 위한 학자금 대�
 INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
 VALUES('농협은행',8000000,3.5,'FREELANCER','프리랜서들을 위한 코로나 긴급 지원 대출',365, 40);
 INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
+=======
+INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
+VALUES('FAST은행',2000000,1.5,'FREELANCER','프리랜서를 위한 대출',150, 30);
+INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
+VALUES('신한은행',5000000,3.5,'EMPLOYEE','직장인을 위한 긴급 비상금 대출',365, 30);
+INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
+VALUES('신한은행',3000000,1.5,'STUDENT','대학생을 위한 학자금 대출',730, 20);
+INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
+VALUES('농협은행',8000000,3.5,'FREELANCER','프리랜서들을 위한 코로나 긴급 지원 대출',365, 40);
+INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
+>>>>>>> upstream/feat-leehyunseung
 VALUES('국가장학재단',5000000,1.0,'STUDENT','저소득층 및 취약 계층 지원 대출 사업',1095, 10);
 INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
 VALUES('토스뱅크',10000000,3.2,'UNEMPLOYED','취업 준비생 및  미래의 꿈나무를  위한  대출 사업',730, 20);
@@ -82,6 +94,5 @@ INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
 VALUES('신한은행',1200000,2.43,'FREELANCER','프리랜서를 위한 신용대출',150,34);
 INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age) 
 VALUES('우리은행',400000,4.5,'UNEMPLOYED','취준생을 위한 청년대출',300,27);
-
 INSERT INTO USERS (age, job, name, password, username) 
 VALUES(20,'UNEMPLOYED','aa맨','$2a$10$h7.nKr37ZcmskzJR7DKFteXRMvutoh5Wgg.Gx63wYi7wJUR1mAT2.','aaa');

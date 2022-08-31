@@ -1,18 +1,13 @@
 package com.fastcampus.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.ToString;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-@ToString
-@AllArgsConstructor
-@Getter
-//@JsonFormat   
+@JsonFormat
 public enum JobType {
 	EMPLOYEE,
-	UNIMPLOYED, 
+	UNEMPLOYED, 
 	BUSINESS, 
 	STUDENT, 
-	FREELANCER; 
+	FREELANCER;  
 
 }
