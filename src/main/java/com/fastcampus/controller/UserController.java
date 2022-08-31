@@ -60,9 +60,9 @@ public class UserController {
 	// 회원 정보 수정
 	@ApiOperation(value = "회원 정보 수정", notes = "회원의 수정된 정보들을 받아서 수정한다.")
 	@ApiImplicitParam(name = "userDto", value = "수정할 회원 정보", dataType = "userDto")
-	@PutMapping("/user")
+	@PutMapping("/users/{id}")
 	@ResponseBody
-	public void updateUser(@RequestBody UserDto userDto) {
-		 userService.updateUser(userDto);
+	public void updateUser(@RequestBody UserDto userDto, @PathVariable Long id) {
+		 userService.updateUser(userDto, id);
 	}
 }
