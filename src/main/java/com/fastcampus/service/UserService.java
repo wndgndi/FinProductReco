@@ -89,11 +89,14 @@ public class UserService {
 
 	// 회원 정보 수정
 	@Transactional
-	public void updateUser(UserDto userDto) {
-		User myUser = userRepository.findById(userDto.getId()).get();
+	public UserDto updateUser(UserDto userDto, Long id) {  
+		User myUser = userRepository.findById(id).get();  
 		myUser.setJob(userDto.getJob());
 		myUser.setName(userDto.getName());
-		myUser.setPassword(userDto.getPassword());
+		String encodedPassword =  BCrypt.hashpw(userDto.getPassword(), BCrypt.gensalt());
+		myUser.setPassword(encodedPassword);
 		userRepository.save(myUser);
+		UserDto myUserDto = modelMapper.map(myUser, UserDto.class);
+		return myUserDto;
 	}
 }
