@@ -36,7 +36,6 @@ public class CartController {
 		cartService.deleteInCart(cartId, productId);
 	}
 	
-	
 	//카트 내 상품 모두 삭제
 	@DeleteMapping("/carts/{cartId}")
 	public void deleteAllInCart(@PathVariable Long cartId) {
