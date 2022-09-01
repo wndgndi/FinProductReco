@@ -24,7 +24,6 @@ public class UserService {
 	private final UserRepository userRepository;
 	private final CartRepository cartRepository;
 	private final ModelMapper modelMapper;
-	private final CartRepository cartRepository;
 	
 	private static final String LOGIN_EXCEPTION_MSG = "로그인정보가 일치하지 않습니다.";
 	private static final String USERNAME_EXIST_EXCEPTION_MSG = "이미 계정이 존재합니다.";

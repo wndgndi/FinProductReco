@@ -6,10 +6,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ModelMapperConfig {
-	
-	// @Bean
+
+	// ModelMapper 빈 등록
+	@Bean
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
-	
 }

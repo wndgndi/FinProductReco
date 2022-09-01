@@ -19,7 +19,10 @@ public class WebConfig implements WebMvcConfigurer {
             "/user",
             "/users",
             "/error/**",
-            "/products"    // 임시 허가 
+            "/v2/api-docs",
+            "/swagger-resources/**",
+            "/swagger-ui/**"
+
     };
     
     private final JwtInterceptor jwtInterceptor;
@@ -30,10 +33,4 @@ public class WebConfig implements WebMvcConfigurer {
 						.addPathPatterns("/**")
 						.excludePathPatterns(EXCLUDE_PATHS);
     }
-    
-    //ModelMapper 빈 등록
-    @Bean
-	ModelMapper modelMapper() {
-		return new ModelMapper();
-	}
 }
