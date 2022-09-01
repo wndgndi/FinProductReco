@@ -89,4 +89,16 @@ public class CartController {
 	public void addProduct(@PathVariable Long cartId, @RequestBody ProductDto productDto) {
 		cartService.addProduct(cartId, productDto);
 	}
+	
+	//카트 내 상품 하나 삭제
+	@DeleteMapping("/carts/{cartId}/{productId}")
+	public void deleteInCart(@PathVariable Long cartId, @PathVariable Long productId) {
+		cartService.deleteInCart(cartId, productId);
+	}
+	
+	//카트 내 상품 모두 삭제
+	@DeleteMapping("/carts/{cartId}")
+	public void deleteAllInCart(@PathVariable Long cartId) {
+		cartService.deleteAllInCart(cartId);
+	}
 }

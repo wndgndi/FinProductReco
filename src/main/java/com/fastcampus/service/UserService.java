@@ -102,7 +102,8 @@ public class UserService {
 		User myUser = userRepository.findById(id).get();  
 		myUser.setJob(userDto.getJob());
 		myUser.setName(userDto.getName());
-		myUser.setPassword(userDto.getPassword());
+		String encodedPassword =  BCrypt.hashpw(userDto.getPassword(), BCrypt.gensalt());
+		myUser.setPassword(encodedPassword);
 		userRepository.save(myUser);
 		UserDto myUserDto = modelMapper.map(myUser, UserDto.class);
 		return myUserDto;
