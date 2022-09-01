@@ -13,7 +13,6 @@ spring:
     pathmatch:
       matching-strategy: ant-path-matcher
     
-    
 # JPA 설정
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
