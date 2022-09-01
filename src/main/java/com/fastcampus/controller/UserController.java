@@ -38,12 +38,6 @@ public class UserController {
         return loginMember;
     }
 	
-	//로그아웃
-	@GetMapping("/logout")
-	public void logout() {
-		
-	}
-	
 	// 회원가입
 	@ApiOperation(value = "회원가입", notes = "회원 정보를 받아서 새로운 회원을 등록한다.") // 해당 API에 대한 설명이나 설정
 	@ApiImplicitParam(name = "userDto", value = "새로 추가되는 회원 정보", dataType = "UserDto")
