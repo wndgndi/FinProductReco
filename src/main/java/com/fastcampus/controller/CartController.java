@@ -78,14 +78,15 @@ public class CartController {
             cartCount = product.getCartCount();
             job = product.getJob();
             age = product.getAge();
-        }
-    }
-	
-    // 카트에서 상품 삭제
-    @DeleteMapping("/carts/{product.id}")
-    public void deleteFromCart(@PathVariable long id) {
-    	cartService.deleteFromCart(id);
-    }
-    
-    
+        }   
+        	
+	@ApiOperation(value = "장바구니에 상품 추가", notes = "상품 정보를 가져와서 장바구니에 등록해준다.")
+	@ApiImplicitParams( {
+		@ApiImplicitParam(name = "cartId", value = "장바구니 아이디", dataType = "Long", paramType = "path", required = true),
+		@ApiImplicitParam(name = "productDto", value = "상품 정보", dataType = "ProductDto", required = true)
+	})
+	@PostMapping("/product/cart/{cartId}")
+	public void addProduct(@PathVariable Long cartId, @RequestBody ProductDto productDto) {
+		cartService.addProduct(cartId, productDto);
+	}
 }

@@ -9,5 +9,4 @@ public enum JobType {
 	BUSINESS, 
 	STUDENT, 
 	FREELANCER;  
-
 }
