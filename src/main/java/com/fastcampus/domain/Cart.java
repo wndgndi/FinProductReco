@@ -3,12 +3,14 @@ package com.fastcampus.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -34,4 +36,20 @@ public class Cart {
 	public Cart(User user) {
 		this.user=user;
 	}
+	
+	// 연관관계 편의 메소드
+	public void addProduct(Product product) {
+        products.add(product);
+        product.setCart(this);
+    }
+	
+	// 생성메서드
+	public static Cart createCart(User user, Product... products) {
+        Cart cart = new Cart();
+        cart.setUser(user);
+        for (Product product : products) {
+            cart.addProduct(product);
+        }
+        return cart;
+    }
 }

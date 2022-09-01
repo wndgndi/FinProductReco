@@ -42,21 +42,18 @@ public class Product {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cart_id")
 	private Cart cart;
-
-	/*
-	//cartCount 증가
-	public void addCartCount(long count) {
-		    this.cartCount += count;
-    }
 	
-	//cartCount 감소
-	public void minusCartCount(long count) {
-        long restCount = this.cartCount - count;
-        this.cartCount = restCount;
+	// 생성메서드
+	public static Product createProduct(float interestRate, long amount, long repayPeriod, String agency, Long cartCount, JobType job, int age) {
+        Product product = new Product();
+        product.setInterestRate(interestRate);
+        product.setAmount(amount);
+        product.setAgency(agency);
+        product.setCartCount(cartCount);
+        product.setJob(job);
+        product.setAge(age);
+        return product;
     }
-    */
-	
-	// 카트에서 상품 삭제 
 	
 	
 	
