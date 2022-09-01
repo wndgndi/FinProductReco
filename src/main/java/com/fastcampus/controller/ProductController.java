@@ -56,4 +56,6 @@ public class ProductController {
 	public List<ProductDto> getPromoProducts(){
 		return productService.getPromoProducts();
 	}
+	
+	
 }
