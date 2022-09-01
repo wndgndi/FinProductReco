@@ -1,6 +1,7 @@
 package com.fastcampus.jwt.service;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -22,13 +23,18 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class JwtService{
 
 	private static final String SALT = "orimujung";
-	
+	 // JWT 만료 시간 1시간  
+	private static long tokenValidMilisecond = 1000L * 60 * 60;
+	//현재시간
+	Date now = new Date();
     //JWT 생성
 	public <T> String create(String key, T data){
 		String jwt = Jwts.builder()
 					 .setHeaderParam("typ", "JWT")
 					 .setHeaderParam("regDate", System.currentTimeMillis())
 					 .claim(key, data)
+					 .setIssuedAt(now) //발행시점
+					 .setExpiration(new Date(now.getTime() + tokenValidMilisecond)) //발행시점부터 1시간
 					 .signWith(SignatureAlgorithm.HS256, this.generateKey())
 					 .compact();
 		return jwt;
