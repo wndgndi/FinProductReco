@@ -1,6 +1,5 @@
 package com.fastcampus.service;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -55,10 +54,10 @@ public class UserService {
 		String encodedPassword =  BCrypt.hashpw(userDto.getPassword(), BCrypt.gensalt()); //비밀번호 암호화
 		userDto.setPassword(encodedPassword);
 		User user = modelMapper.map(userDto, User.class);
+		user.setCart(new Cart(user));
 		userRepository.save(user);
 		// 기본티 할당된 UserDto 리턴, 및 카트 생성
 		User returnUser=userRepository.findByUsername(userDto.getUsername()).get(); 
-		cartRepository.save(new Cart(returnUser));
 		UserDto returnUserDto = modelMapper.map(returnUser, UserDto.class);
 		return returnUserDto;
 	}

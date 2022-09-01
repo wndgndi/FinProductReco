@@ -4,12 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -37,24 +34,5 @@ public class Product {
 	@Enumerated(EnumType.STRING)
 	private JobType job; //직업
 	
-	private int age; //나이
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "cart_id")
-	private Cart cart;
-	
-	// 생성메서드
-	public static Product createProduct(float interestRate, long amount, long repayPeriod, String agency, Long cartCount, JobType job, int age) {
-        Product product = new Product();
-        product.setInterestRate(interestRate);
-        product.setAmount(amount);
-        product.setAgency(agency);
-        product.setCartCount(cartCount);
-        product.setJob(job);
-        product.setAge(age);
-        return product;
-    }
-	
-	
-	
+	private int age; //나이	
 }

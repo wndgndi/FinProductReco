@@ -34,7 +34,6 @@ create table USERS (
     primary key (user_Id)
 );
 
-
 alter table Product
    add constraint FKdoypnklcfpi3kbpfw845e9of4
    foreign key (cart_id)
@@ -80,5 +79,3 @@ VALUES('우리은행',400000,4.5,'UNEMPLOYED','취준생을 위한 청년대출'
 
 INSERT INTO USERS (age, job, name, password, username) 
 VALUES(20,'UNEMPLOYED','aa맨','$2a$10$h7.nKr37ZcmskzJR7DKFteXRMvutoh5Wgg.Gx63wYi7wJUR1mAT2.','aaa');
-
-INSERT INTO CART(cart_id) VALUES(1);
