@@ -2,6 +2,8 @@ package com.fastcampus.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,9 +20,9 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "product_id")
-	private Long id;
+	private Long id; //기본키
   
-	private long interestRate; //이율
+	private float interestRate; //이율
 	
 	private String name; //상품 이름
 	
@@ -32,7 +34,8 @@ public class Product {
 	
 	private Long cartCount; //장바구니 등록 수
 	
-	private String job; //직업
+	@Enumerated(EnumType.STRING)
+	private JobType job; //직업
 	
 	private int age; //나이
 
@@ -40,6 +43,7 @@ public class Product {
 	@JoinColumn(name = "cart_id")
 	private Cart cart;
 
+	/*
 	//cartCount 증가
 	public void addCartCount(long count) {
 		    this.cartCount += count;
@@ -47,7 +51,13 @@ public class Product {
 	
 	//cartCount 감소
 	public void minusCartCount(long count) {
-        Long restCount = this.cartCount - count;
+        long restCount = this.cartCount - count;
         this.cartCount = restCount;
     }
+    */
+	
+	// 카트에서 상품 삭제 
+	
+	
+	
 }

@@ -1,0 +1,62 @@
+{"properties": [
+  {
+    "name": "spring.jpa.properties[hibernate.format_sql]",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.jpa.properties[hibernate.format_sql]'"
+  },
+  {
+    "name": "server.datasource.driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'server.datasource.driver-class-name'"
+  },
+  {
+    "name": "server.datasource.url",
+    "type": "java.lang.String",
+    "description": "A description for 'server.datasource.url'"
+  },
+  {
+    "name": "server.datasource.password",
+    "type": "java.lang.String",
+    "description": "A description for 'server.datasource.password'"
+  },
+  {
+    "name": "server.datasource.username",
+    "type": "java.lang.String",
+    "description": "A description for 'server.datasource.username'"
+  },
+  {
+    "name": "server.jpa.database-platform",
+    "type": "java.lang.String",
+    "description": "A description for 'server.jpa.database-platform'"
+  },
+  {
+    "name": "server.jpa.show-sql",
+    "type": "java.lang.String",
+    "description": "A description for 'server.jpa.show-sql'"
+  },
+  {
+    "name": "server.jpa.hibernate.naming.physical-strategy",
+    "type": "java.lang.String",
+    "description": "A description for 'server.jpa.hibernate.naming.physical-strategy'"
+  },
+  {
+    "name": "server.jpa.hibernate.use-new-id-generator-mappings",
+    "type": "java.lang.String",
+    "description": "A description for 'server.jpa.hibernate.use-new-id-generator-mappings'"
+  },
+  {
+    "name": "server.jpa.hibernate.ddl-auto",
+    "type": "java.lang.String",
+    "description": "A description for 'server.jpa.hibernate.ddl-auto'"
+  },
+  {
+    "name": "server.jpa.properties[hibernate.format_sql]",
+    "type": "java.lang.String",
+    "description": "A description for 'server.jpa.properties[hibernate.format_sql]'"
+  },
+  {
+    "name": "server.sql.init.mode",
+    "type": "java.lang.String",
+    "description": "A description for 'server.sql.init.mode'"
+  }
+]}

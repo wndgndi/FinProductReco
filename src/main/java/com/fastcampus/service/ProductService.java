@@ -10,10 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fastcampus.domain.Product;
-import com.fastcampus.domain.User;
 import com.fastcampus.dto.ProductDto;
+import com.fastcampus.dto.UserDto;
 import com.fastcampus.persistence.ProductRepository;
-import com.fastcampus.security.jpa.UserDetailsImpl;
 
 import lombok.RequiredArgsConstructor;
 
@@ -44,11 +43,10 @@ public class ProductService {
 	
 	//유저별 추천 상품 추천
 	@Transactional(readOnly=true)
-	public List<ProductDto> getRecoProducts(UserDetailsImpl userDetails){
-		User user = userDetails.getUser();
+	public List<ProductDto> getRecoProducts(UserDto userDto){
 		List<Product> recoProducts = new ArrayList<Product>();
-		recoProducts.addAll(productRepository.findByJob(user.getJob()));
-		recoProducts.addAll(productRepository.findByAge(user.getAge()));
+		recoProducts.addAll(productRepository.findByJob(userDto.getJob()));
+		recoProducts.addAll(productRepository.findByAge(userDto.getAge()));
 		
 		List<ProductDto> recoProductDtos = recoProducts.stream().
 		map(product -> modelMapper.map(product, ProductDto.class)).collect(Collectors.toList());
@@ -59,11 +57,12 @@ public class ProductService {
 	//주력 상품 랜덤 추천
 	@Transactional(readOnly=true)
 	public List<ProductDto> getPromoProducts(){
-		HashSet<Integer> nums = new HashSet<Integer>(6);
-		
-		for(int i=0; i<nums.size();i++) {
-			nums.add((int)(Math.random()*20));
+		HashSet<Long> nums = new HashSet<Long>(6);
+
+		while(nums.size()<6){
+			nums.add((long)(Math.random()*15));
 		}
+
 		List<Product> promoProducts = productRepository.findByRamdom(nums);
 		List<ProductDto> promoProductDtos = promoProducts.stream().
 				map(product -> modelMapper.map(product, ProductDto.class)).collect(Collectors.toList());
