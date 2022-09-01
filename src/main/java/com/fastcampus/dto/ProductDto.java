@@ -12,7 +12,7 @@ public class ProductDto {
 	private long id; //기본키
 	
 	@ApiModelProperty(value = "이율", example = "3.12", required = true )
-	private long interestRate; //이율
+	private float interestRate; //이율
 	
 	@ApiModelProperty(value = "상품명", example = "청년 대출", required = true )
 	private String name; //상품 이름

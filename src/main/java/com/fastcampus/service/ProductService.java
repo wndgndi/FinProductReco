@@ -58,7 +58,7 @@ public class ProductService {
 	@Transactional(readOnly=true)
 	public List<ProductDto> getPromoProducts(){
 		HashSet<Long> nums = new HashSet<Long>(6);
-		
+
 		while(nums.size()<6){
 			nums.add((long)(Math.random()*15));
 		}
