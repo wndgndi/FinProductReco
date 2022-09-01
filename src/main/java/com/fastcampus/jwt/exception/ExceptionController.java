@@ -36,7 +36,6 @@ public class ExceptionController {
     }
     
     private void handleLog(Exception e){
-    	
     	System.out.println("Error 발생");
     }
 }
