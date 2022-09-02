@@ -12,7 +12,6 @@ create table Product (
     age integer not null,
     agency varchar(255),
     amount bigint not null,
-    cartCount integer,
     interestRate Decimal(6,3) not null,
     job varchar(255),
     name varchar(255),

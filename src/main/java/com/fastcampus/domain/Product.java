@@ -29,8 +29,6 @@ public class Product {
 	
 	private String agency; //대출 기관
 	
-	private Long cartCount; //장바구니 등록 수
-	
 	@Enumerated(EnumType.STRING)
 	private JobType job; //직업
 	
