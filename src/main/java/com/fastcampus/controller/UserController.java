@@ -60,35 +60,6 @@ public class UserController {
 		return userService.getUser(id);
 	}
 	
-	/*
-	// 회원 상세 조회
-	@GetMapping("/users")
-    public Result users() {
-
-        List<User> findUsers = userService.findUsers();
-        List<UserDto> collect = findUsers.stream()
-                .map(u -> new UserDto(u.getName()))
-                .collect(Collectors.toList());    
-
-        return new Result(collect);    
-    }
-
-    @Data
-    @AllArgsConstructor
-    static class Result<T> {   
-        private T data;
-    }
-
-    @Data
-    @AllArgsConstructor
-    static class UserDto {
-    	private String name;
-        // private String username;
-        // private JobType job;
-        
-    }
-	*/
-	
 	// 회원 정보 수정
 	@ApiOperation(value = "회원 정보 수정", notes = "회원의 수정된 정보들을 받아서 수정한다.")
 	@ApiImplicitParam(name = "userDto", value = "수정할 회원 정보", dataType = "userDto")

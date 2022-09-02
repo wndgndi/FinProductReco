@@ -4,12 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -37,27 +34,5 @@ public class Product {
 	@Enumerated(EnumType.STRING)
 	private JobType job; //직업
 	
-	private int age; //나이
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "cart_id")
-	private Cart cart;
-
-	/*
-	//cartCount 증가
-	public void addCartCount(long count) {
-		    this.cartCount += count;
-    }
-	
-	//cartCount 감소
-	public void minusCartCount(long count) {
-        long restCount = this.cartCount - count;
-        this.cartCount = restCount;
-    }
-    */
-	
-	// 카트에서 상품 삭제 
-	
-	
-	
+	private int age; //나이	
 }
