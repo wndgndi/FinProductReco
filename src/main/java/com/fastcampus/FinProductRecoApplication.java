@@ -11,5 +11,4 @@ public class FinProductRecoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FinProductRecoApplication.class, args);
 	}
-
 }

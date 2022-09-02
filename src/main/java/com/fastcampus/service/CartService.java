@@ -36,25 +36,16 @@ public class CartService {
 	public void addProduct(Long cartId, ProductDto productDto) {
 		Cart findCart = cartRepository.findById(cartId).get();
 		Product product = modelMapper.map(productDto, Product.class);	
-		List<Product> products = findCart.getProducts();
-		products.add(product);
+		findCart.addProduct(product);
 		cartRepository.save(findCart);
-		
-		for(Product pro: cartRepository.findById(cartId).get().getProducts()) {
-			System.out.println(pro);
-		}
 	}
 
 	// 카트에서 삭제
 	@Transactional
 	public void deleteInCart(Long cartId, Long productId) {
 		Cart findCart = cartRepository.findById(cartId).get();
-		findCart.getProducts().remove(productId.intValue());
+		findCart.getProducts().removeIf(product ->product.getId()==productId);
 		cartRepository.save(findCart);
-
-		for(Product pro: cartRepository.findById(cartId).get().getProducts()) {
-			System.out.println(pro);
-		}
     }
 	
 	// 카트 모든 상품 삭제
@@ -63,9 +54,5 @@ public class CartService {
 		Cart findCart = cartRepository.findById(cartId).get();
 		findCart.getProducts().removeAll(findCart.getProducts());
 		cartRepository.save(findCart);	
-		
-		for(Product pro: cartRepository.findById(cartId).get().getProducts()) {
-			System.out.println(pro);
-		}
 	}
 }
