@@ -27,8 +27,4 @@ spring:
 ## sql 문 자동실행
   sql:
     init:
-      mode: always    
-      
-      
-      
-      
+      mode: always   

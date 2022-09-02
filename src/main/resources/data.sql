@@ -75,6 +75,3 @@ INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age)
 VALUES('신한은행',1200000,2.43,'FREELANCER','프리랜서를 위한 신용대출',150,34);
 INSERT INTO PRODUCT (agency, amount, interestRate, job, name, repayPeriod, age) 
 VALUES('우리은행',400000,4.5,'UNEMPLOYED','취준생을 위한 청년대출',300,27);
-
-INSERT INTO USERS (age, job, name, password, username) 
-VALUES(20,'UNEMPLOYED','aa맨','$2a$10$h7.nKr37ZcmskzJR7DKFteXRMvutoh5Wgg.Gx63wYi7wJUR1mAT2.','aaa');

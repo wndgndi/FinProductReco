@@ -27,7 +27,6 @@ public class UserController {
 	private final UserService userService;
 	private final JwtService jwtService;
 	
-	
 	//로그인
 	@PostMapping("/login")
 	@ResponseBody
@@ -39,7 +38,6 @@ public class UserController {
         return loginMember;
     }
     
-	
 	// 회원가입
 	@ApiOperation(value = "회원가입", notes = "회원 정보를 받아서 새로운 회원을 등록한다.") // 해당 API에 대한 설명이나 설정
 	@ApiImplicitParam(name = "userDto", value = "새로 추가되는 회원 정보", dataType = "UserDto")
@@ -49,7 +47,6 @@ public class UserController {
 		UserDto insertedUser = userService.insertUser(userDto);
 		return insertedUser;
 	}
-	
 	
 	// 회원 상세 조회
 	@ApiOperation(value = "회원 상세 조회", notes = "회원의 Id를 통해 회원의 정보를 조회한다.")
