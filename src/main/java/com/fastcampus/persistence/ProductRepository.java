@@ -14,7 +14,7 @@ import com.fastcampus.domain.Product;
 public interface ProductRepository extends JpaRepository<Product, Long>{
 
 	//상품 검색
-	List<Product> findByNameContainsIgnoreCase(String keyword);
+	List<Product> findByNameContainsIgnoreCase(@Param("keyword") String keyword);
 	
 	//나이에 맞는 삼품 검색
 	List<Product> findByAge(int age);
