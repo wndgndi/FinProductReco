@@ -2,13 +2,12 @@ package com.fastcampus.controller;
 
 import java.util.List;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.fastcampus.dto.ProductDto;
 import com.fastcampus.service.CartService;
@@ -18,7 +17,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 public class CartController {
 	
@@ -29,12 +28,10 @@ public class CartController {
 	@ApiImplicitParams(
 			@ApiImplicitParam(name = "cartId", value = "장바구니 아이디", dataType = "Long", paramType = "path", required = true))
 	@GetMapping("/carts/{cartId}")
-	@ResponseBody
 	public List<ProductDto> getProducts(@PathVariable Long cartId) {
 		return cartService.getProducts(cartId);
 	}
 	
-
 	// 카트에 상품 등록
 	@ApiOperation(value = "장바구니에 상품 추가", notes = "상품 정보를 가져와서 장바구니에 등록해준다.")
 	@ApiImplicitParams({
