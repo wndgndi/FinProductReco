@@ -51,8 +51,6 @@ dependencies {
 	implementation group: 'org.mindrot', name: 'jbcrypt', version: '0.4'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-maven-plugin', version: '2.7.2'
 
-
-
 }
 
 tasks.named('test') {
